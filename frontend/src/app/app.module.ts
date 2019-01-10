@@ -9,13 +9,15 @@ import { HomeComponent } from './pages/home/home.component';
 import { CustomMaterialModule } from './custom-material.module';
 import { TalentsComponent } from './pages/talents/talents.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
+import { TalentsCreateEditComponent } from './pages/talents-create-edit/talents-create-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TalentsComponent,
-    AppHeaderComponent
+    AppHeaderComponent,
+    TalentsCreateEditComponent
   ],
   imports: [
     BrowserModule,

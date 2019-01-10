@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 export interface PeriodicElement {
   name: string;
@@ -31,9 +32,13 @@ export class TalentsComponent implements OnInit {
   displayedColumns: string[] = ['name', 'email', 'actions'];
   dataSource = ELEMENT_DATA;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  addNew() {
+    this.router.navigateByUrl('/talents/create');
   }
 
 }
