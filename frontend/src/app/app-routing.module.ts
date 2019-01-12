@@ -7,7 +7,8 @@ import { TalentsCreateEditComponent } from './pages/talents-create-edit/talents-
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'talents', component: TalentsComponent },
-  { path: 'talents/create', component: TalentsCreateEditComponent }
+  { path: 'talents/create', component: TalentsCreateEditComponent },
+  { path: 'talents/edit/:id', component: TalentsCreateEditComponent },
 ];
 
 @NgModule({

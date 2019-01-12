@@ -1,1 +1,168 @@
 <app-header [title]="title"></app-header>
+
+<div class="sub-content">
+  <form class="example-form" [formGroup]="talentForm" (ngSubmit)="onSubmit()">
+    <mat-vertical-stepper>
+      <mat-step label="Fill out your personal data">
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="Name*"
+            formControlName="name"
+            [errorStateMatcher]="matcher"
+          />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="Email*"
+            formControlName="email"
+            [errorStateMatcher]="matcher"
+          />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="Skype*"
+            formControlName="skype"
+            [errorStateMatcher]="matcher"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="Linkedin"
+            formControlName="linkedin"
+            [errorStateMatcher]="matcher"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="Phone (WhatsApp)*"
+            formControlName="phone"
+            [errorStateMatcher]="matcher"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="City*"
+            formControlName="city"
+            [errorStateMatcher]="matcher"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="State*"
+            formControlName="state"
+            [errorStateMatcher]="matcher"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="Portfolio"
+            formControlName="portfolio"
+            [errorStateMatcher]="matcher"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="Hourly Salary*"
+            formControlName="hourlySalary"
+            [errorStateMatcher]="matcher"
+          />
+        </mat-form-field>
+      </mat-step>
+      <mat-step label="Fill out your availability">
+        <p style="font-weight: bold">
+          What is your willingness to work today? / Qual é sua disponibilidade
+          para trabalhar hoje? *
+        </p>
+
+        <mat-checkbox formControlName="upToFourHoursPerDay"
+          >Up to 4 hours per day / Até 4 horas por dia</mat-checkbox
+        ><br />
+        <mat-checkbox formControlName="fourToSixHoursPerDay"
+          >4 to 6 hours per day / De 4 á 6 horas por dia</mat-checkbox
+        ><br />
+        <mat-checkbox formControlName="sixToHeightHoursPerDay"
+          >6 to 8 hours per day /De 6 á 8 horas por dia</mat-checkbox
+        ><br />
+        <mat-checkbox formControlName="upToEightHoursPerDay"
+          >Up to 8 hours a day (are you sure?) / Acima de 8 horas por dia (tem
+          certeza?)</mat-checkbox
+        ><br />
+        <mat-checkbox formControlName="onlyWeekends"
+          >Only weekends / Apenas finais de semana</mat-checkbox
+        >
+
+        <p style="font-weight: bold">
+          What's the best time to work for you? / Pra você qual é o melhor
+          horário para trabalhar? *
+        </p>
+
+        <mat-checkbox formControlName="workingMorning"
+          >Morning (from 08:00 to 12:00) / Manhã (de 08:00 ás
+          12:00)</mat-checkbox
+        ><br />
+        <mat-checkbox formControlName="workingAfternoon"
+          >Afternoon (from 1:00 p.m. to 6:00 p.m.) / Tarde (de 13:00 ás
+          18:00)</mat-checkbox
+        ><br />
+        <mat-checkbox formControlName="workingNight"
+          >Night (7:00 p.m. to 10:00 p.m.) /Noite (de 19:00 as
+          22:00)</mat-checkbox
+        ><br />
+        <mat-checkbox formControlName="workingDawn"
+          >Dawn (from 10 p.m. onwards) / Madrugada (de 22:00 em
+          diante)</mat-checkbox
+        ><br />
+        <mat-checkbox formControlName="workingBusiness"
+          >Business (from 08:00 a.m. to 06:00 p.m.) / Comercial (de 08:00 as
+          18:00)</mat-checkbox
+        >
+      </mat-step>
+
+      <mat-step label="Fill out your skills">
+        <ng-select
+          [items]="skillsArr"
+          [multiple]="true"
+          [closeOnSelect]="false"
+          [searchable]="false"
+          placeholder="Select your skills"
+          formControlName="skills"
+          appendTo="body"
+        >
+        </ng-select>
+      </mat-step>
+
+      <mat-step label="Done">
+        <p>
+          <button
+            mat-raised-button
+            type="submit"
+            color="primary"
+            [disabled]="!talentForm.valid || saving"
+          >
+            {{ saving ? "Saving..." : "Save" }}</button
+          >&nbsp;
+          <button mat-raised-button type="button" (click)="backToList()">
+            Back to list
+          </button>
+        </p>
+      </mat-step>
+    </mat-vertical-stepper>
+  </form>
+
+  <!-- {{ talentForm.value | json }} -->
+</div>

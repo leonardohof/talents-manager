@@ -9,8 +9,6 @@ namespace TalentsManagerService.Data
         #region Properties
 
         public DbSet<Talent> Talents { get; set; }
-        public DbSet<Knowledge> Knowledges { get; set; }
-        public DbSet<TalentKnowledge> TalentKnowledges { get; set; }
 
         #endregion
 
@@ -22,17 +20,30 @@ namespace TalentsManagerService.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Knowledge>().HasData(
-                new Knowledge { Id = 1, Name = "Ionic", CreatedAt = DateTime.Now, LastUpdatedAt = DateTime.Now },
-                new Knowledge { Id = 2, Name = "Android", CreatedAt = DateTime.Now, LastUpdatedAt = DateTime.Now },
-                new Knowledge { Id = 3, Name = "iOS", CreatedAt = DateTime.Now, LastUpdatedAt = DateTime.Now },
-                new Knowledge { Id = 4, Name = "HTML", CreatedAt = DateTime.Now, LastUpdatedAt = DateTime.Now },
-                new Knowledge { Id = 5, Name = "CSS", CreatedAt = DateTime.Now, LastUpdatedAt = DateTime.Now },
-                new Knowledge { Id = 6, Name = "Bootstrap", CreatedAt = DateTime.Now, LastUpdatedAt = DateTime.Now },
-                new Knowledge { Id = 7, Name = "jQuery", CreatedAt = DateTime.Now, LastUpdatedAt = DateTime.Now },
-                new Knowledge { Id = 8, Name = "AngularJs", CreatedAt = DateTime.Now, LastUpdatedAt = DateTime.Now },
-                new Knowledge { Id = 9, Name = "Java", CreatedAt = DateTime.Now, LastUpdatedAt = DateTime.Now },
-                new Knowledge { Id = 10, Name = "ASP .NET MVC", CreatedAt = DateTime.Now, LastUpdatedAt = DateTime.Now }
+            modelBuilder.Entity<Talent>().HasData(
+                new Talent {
+                    Id = 1,
+                    Name = "Leonardo",
+                    Email = "lmhofling@gmail.com",
+                    Skype = "leonardo.hofling",
+                    Phone = "+551900000000",
+                    Linkedin = "https =//www.linkedin.com/in/leonardo-miranda-hofling-126b0320/",
+                    City = "Campinas",
+                    State = "São Paulo",
+                    Portfolio = "xxx",
+                    UpToFourHoursPerDay = true,
+                    FourToSixHoursPerDay = false,
+                    SixToHeightHoursPerDay = false,
+                    UpToEightHoursPerDay = false,
+                    OnlyWeekends = false,
+                    WorkingMorning = false,
+                    WorkingAfternoon = false,
+                    WorkingDawn = true,
+                    WorkingNight = true,
+                    WorkingBusiness = false,
+                    HourlySalary = 85m,
+                    _skills = "C#;Java"
+                }
             );
         }
     }
