@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  backend:
+    image: microsoft/dotnet:2.2-sdk
+    command: sh -c "dotnet restore && dotnet run --project TalentsManagerService/TalentsManagerService.csproj --environment=Docker"
+    working_dir: /backend
+    volumes: 
+      - ./backend:/backend
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=Docker
+    network_mode: host
+    ports:
+      - "40529:40529"
+      - "44310:44310"
+    expose:
+      - "40529"
+      - "44310"
+    depends_on:
+          - db
+  frontend:
+    image: node:8.9
+    command: sh -c "npm install && npm run start"
+    working_dir: /frontend
+    volumes: 
+      - ./frontend:/frontend
+    network_mode: host
+    ports:
+      - "4200:4200"
+    expose:
+      - "4200"
+  db:
+    image: "microsoft/mssql-server-linux"
+    #command: apt-get update && apt-get install -y curl apt-transport-https && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - &&  curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql-release.list && \
+    #  apt-get update && ACCEPT_EULA=Y apt-get install -y mssql-tools && apt-get install -y locales && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && locale-gen
+    environment:
+        SA_PASSWORD: "Talents@manager2019"
+        ACCEPT_EULA: "Y"
+    network_mode: host
+    ports:
+      - "1433:1433"
+    expose:
+      - "1433"
